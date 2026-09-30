@@ -2,7 +2,7 @@
 
 Rust bindings to the [unrealsdk](https://github.com/bl-sdk/unrealsdk) C API (WILLOW flavour: BL1/BL2/TPS/AoDK).   
 
-*This crate is not affiliated with the `unrealsdkk` nor is it a replacement for the `unrealsdk`.*
+*This crate is not affiliated with the `unrealsdk` nor is it a replacement for the `unrealsdk`.*
 
 ## Should I use this?
 
