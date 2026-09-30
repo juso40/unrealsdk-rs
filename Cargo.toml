@@ -1,0 +1,30 @@
+[package]
+name = "unrealsdk-rs"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+repository = "https://github.com/juso40/unrealsdk-rs"
+description = "Runtime Rust bindings to the unrealsdk.dll C API"
+
+# Runtime bindings into the `unrealsdk.dll` a game process already has
+# loaded: the `UNREALSDK_CAPI` export table (`_unrealsdk_export__*`,
+# runtime-resolved), repr(C) struct replicas, find/call/prop access, hooks
+# with Rust-constructed pseudo-vtable callbacks, and the
+# `PostEditChangeProperty` vtable dispatch. Nothing here ever runs Python
+# code, and nothing here is linked at build time — see README.md for why.
+
+[dependencies]
+# Mismatch diagnostics in the objects layer (`PropValue` conversions). No
+# logger is installed in-game by
+# this crate; messages flow if (and only if) the host installed one.
+log = { version = "0.4", features = ["std"] }
+
+# PE parsing + the pattern scanner behind `scan` (module ranges, code-range
+# scanning, signature matching).
+pelite = { version = "0.10", default-features = false, features = ["std"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62", features = [
+    "Win32_Foundation",
+    "Win32_System_LibraryLoader",
+] }

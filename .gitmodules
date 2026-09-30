@@ -1,0 +1,3 @@
+[submodule "unrealsdk"]
+	path = unrealsdk
+	url = https://github.com/bl-sdk/unrealsdk.git
